@@ -1,0 +1,509 @@
+/* Game Steps Component Styles */
+.game-steps {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.step-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 700px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.step-container.entering {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+.step-container.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.step-title {
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Names Step Styles */
+.names-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.name-card {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 200px;
+  animation: slideInLeft 0.8s ease;
+}
+
+.name-card:last-child {
+  animation: slideInRight 0.8s ease;
+}
+
+.name-label {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.name-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.normalized-name {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.plus-sign {
+  font-size: 2rem;
+  color: #667eea;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+/* Letters Analysis Styles */
+.letters-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.name-letters h4 {
+  text-align: center;
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.letter-grid {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+.letter.crossed-out {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  position: relative;
+  animation: crossOut 1s ease;
+  opacity: 0.7;
+}
+
+.letter.remaining {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+  animation: highlight 1s ease;
+}
+
+.cross {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.common-letters-summary {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+}
+
+.common-letters-summary h4 {
+  color: #d63031;
+  margin-bottom: 1rem;
+}
+
+.common-letters-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.common-letter-item {
+  background: #ff6b6b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  animation: bounceIn 0.6s ease;
+}
+
+/* Remaining Analysis Styles */
+.remaining-analysis {
+  text-align: center;
+}
+
+.remaining-letters-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.remaining-letter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  min-width: 60px;
+  animation: bounceIn 0.6s ease;
+}
+
+.remaining-letter-item .letter {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.remaining-letter-item .count {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.no-remaining {
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+}
+
+.total-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  color: white;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  animation: pulse 2s infinite;
+}
+
+.count-label {
+  font-weight: 600;
+}
+
+.count-value {
+  font-size: 2rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+/* FLAMES Intro Styles */
+.flames-intro {
+  text-align: center;
+}
+
+.flames-letters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.flame-letter-card {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: white;
+  padding: 1.5rem 1rem;
+  border-radius: 15px;
+  text-align: center;
+  animation: bounceIn 0.8s ease;
+  transition: transform 0.3s ease;
+}
+
+.flame-letter-card:hover {
+  transform: translateY(-5px);
+}
+
+.flame-letter-card .letter {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.flame-letter-card .meaning {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.elimination-explanation {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+/* Elimination Step Styles */
+.elimination-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.flames-sequence {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.before-elimination,
+.after-elimination {
+  text-align: center;
+}
+
+.before-elimination h4,
+.after-elimination h4 {
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.letters-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.flame-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: white;
+  transition: all 0.5s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+.flame-letter.eliminated {
+  background: linear-gradient(135deg, #ff7675, #d63031);
+  animation: elimination 1s ease;
+}
+
+.flame-letter.remaining {
+  background: linear-gradient(135deg, #00b894, #00a085);
+  animation: bounceIn 0.6s ease;
+}
+
+.elimination-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: #667eea;
+  animation: bounce 1s infinite;
+}
+
+.count-info,
+.eliminated-info {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes elimination {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+@keyframes crossOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes highlight {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(78, 205, 196, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-steps {
+    padding: 1rem;
+  }
+
+  .step-container {
+    padding: 2rem;
+  }
+
+  .step-title {
+    font-size: 1.5rem;
+  }
+
+  .names-display {
+    gap: 1rem;
+  }
+
+  .name-card {
+    min-width: 150px;
+    padding: 1rem;
+  }
+
+  .flames-letters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .letter-grid {
+    gap: 0.3rem;
+  }
+
+  .letter {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-container {
+    padding: 1.5rem;
+  }
+
+  .flames-letters {
+    grid-template-columns: 1fr;
+  }
+
+  .remaining-letters-grid {
+    gap: 0.5rem;
+  }
+
+  .flames-sequence {
+    gap: 1rem;
+  }
+
+  .letters-row {
+    gap: 0.5rem;
+  }
+
+  .flame-letter {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}

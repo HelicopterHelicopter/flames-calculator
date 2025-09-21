@@ -1,0 +1,374 @@
+/* Glitch Screen Component Styles */
+.glitch-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  overflow: hidden;
+  z-index: 1000;
+  animation: screenFlicker 0.3s infinite;
+}
+
+.glitch-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glitch-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 255, 0, 0.1) 0%,
+      transparent 50%
+    ),
+    linear-gradient(0deg, rgba(0, 255, 0, 0.03) 50%, transparent 50%);
+  background-size: 100% 100%, 100% 4px;
+  animation: bgPulse 2s ease-in-out infinite;
+}
+
+/* Matrix Rain Effect */
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.rain-column {
+  position: absolute;
+  top: -100%;
+  width: 20px;
+  height: 100vh;
+  animation: rainFall 3s linear infinite;
+}
+
+.rain-char {
+  display: block;
+  color: #00ff00;
+  font-size: 14px;
+  line-height: 20px;
+  opacity: 0.8;
+  animation: charFlicker 0.5s infinite;
+}
+
+/* Glitch Message */
+.glitch-message {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 80%;
+}
+
+.glitch-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+  position: relative;
+  animation: textGlitch 0.5s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: #ff0000;
+  animation: glitchTop 0.6s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.glitch-text::after {
+  color: #0000ff;
+  animation: glitchBottom 0.6s infinite;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+/* Scan Lines Effect */
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 0%,
+    rgba(0, 255, 0, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scanLines 0.1s linear infinite;
+  pointer-events: none;
+}
+
+/* Glitch Overlay */
+.glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: glitchOverlay 2s infinite;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes screenFlicker {
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes bgPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes charFlicker {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes textGlitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitchTop {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes glitchBottom {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(2px);
+  }
+  40% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scanLines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes glitchOverlay {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  20% {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  21% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Phase-specific styles */
+.glitch-screen.starting {
+  animation: screenBootUp 0.5s ease-out;
+}
+
+.glitch-screen.scrambling .glitch-text {
+  animation: textGlitch 0.4s infinite, textScramble 0.3s infinite;
+}
+
+.glitch-screen.revealing .glitch-text {
+  animation: textGlitch 0.8s infinite, textReveal 1.5s ease-out;
+}
+
+.glitch-screen.complete {
+  animation: screenFlicker 0.5s infinite, fadeToBlack 1s ease-in forwards;
+}
+
+@keyframes screenBootUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: brightness(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: brightness(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes textScramble {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(2px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0.5;
+    text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+  }
+}
+
+@keyframes fadeToBlack {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glitch-text {
+    font-size: 1.8rem;
+  }
+
+  .rain-char {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glitch-text {
+    font-size: 1.4rem;
+  }
+
+  .rain-column {
+    width: 15px;
+  }
+
+  .rain-char {
+    font-size: 10px;
+    line-height: 15px;
+  }
+}
