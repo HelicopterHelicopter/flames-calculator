@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { playFlamesGame, validateNames } from './flamesLogic'
 import NameInput from './components/NameInput'
 import GameSteps from './components/GameSteps'
@@ -159,6 +160,7 @@ function App() {
           <p>Enter two names and discover what the universe has in store for your relationship!</p>
         </footer>
       </div>
+      <Analytics />
     </div>
   )
 }
